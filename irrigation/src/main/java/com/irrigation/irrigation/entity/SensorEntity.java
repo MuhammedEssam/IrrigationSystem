@@ -23,7 +23,7 @@ public class SensorEntity {
 	@Column(name="ID")
 	private Integer ID;
 	
-	@Column(name= "Name")
+	@Column(name= "Name" , unique = true)
 	private String name ; 
 	
 	@Column(name="isCompleted")
