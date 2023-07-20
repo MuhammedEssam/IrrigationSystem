@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -23,22 +25,23 @@ public class SensorEntity {
 	@Column(name="ID")
 	private Integer ID;
 	
-	@Column(name= "Name" , unique = true)
+	@Column(name= "NAME" , unique = true)
 	private String name ; 
 	
-	@Column(name="isCompleted")
-	private Boolean isCompleted;
-	
-	@Column(name="Running")
-	private Boolean running;
-	
-	@Column(name="StartTime")
+	@Column(name="STARTTIME")
 	private LocalTime startTime;
 	
-	@Column(name="EndTime")
+	@Column(name="ENDTIME")
 	private LocalTime endTime;
 	
+	@Column(name="RUNNING")
+	private Boolean running;
+	
+	@Column(name="ISCOMPLETED")
+	private Boolean isCompleted;
+	
 	@ManyToOne
-	@JoinColumn(name="plot_id")
+    @JoinColumn(name = "Plot_ID")
+	@JsonIgnore
 	private PlotEntity plots;
 }

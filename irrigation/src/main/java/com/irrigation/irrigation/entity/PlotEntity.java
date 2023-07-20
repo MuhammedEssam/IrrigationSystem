@@ -1,7 +1,10 @@
 package com.irrigation.irrigation.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,17 +27,20 @@ public class PlotEntity {
 	@Column(name="ID")
 	private Integer ID;
 	
-	@Column(name="Name" , unique = true)
+	@Column(name="NAME" , unique = true)
 	private String name;
 	
-	@Column(name="Area")
+	@Column(name="AREA")
 	private double area;
 	
-	@Column(name="Crop")
+	@Column(name="CROP")
 	private String crop;
 	
-	@Column(name="WaterQuantity")
+	@Column(name="WATERQUANTITY")
 	private double waterQuantity;
 	
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="plots")
+    private List<SensorEntity> sensors ;
+
 
 }
